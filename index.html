@@ -27,22 +27,21 @@
 name: title
 class: center, middle
 
-<img src="images/jspsych+psiturk.png" width="650">
+<img src="images/psiturk_logo.jpg" width="650">
 
 
-# Using .blue[Mechanical Turk] and .blue[jspsych+psiTurk] for Dynamic Web Experiments
+# Uses and Challenges of Mechanical Turk
 <hr>
 .author[
-**Josh de Leeuw**, organizer
+**Matthew Crump**,
 
-_Indiana University_  
+_Brooklyn College of the City University of New York_  
 
 <hr>
 
 **Todd Gureckis** ([@todd_gureckis](http://twitter.com/todd_gureckis)),
-Anna Coenen ([@AnnaCoenen](http://twitter.com/AnnaCoenen)), **Doug Markant** ([@dougmarkant](http://twitter.com/dougmarkant)), Jay Martin, John McDonnell ([@johnvmcdonnell](http://twitter.com/johnvmcdonnell)), Alex Rich, and many github contributors! 
 
-_[Computation and Cognition Lab](http://gureckislab.org)_, _New York University_  
+ _New York University_  
 ]
 
 
@@ -54,7 +53,7 @@ class: middle
 
 1. **Overview, What is Mechanical Turk?** What is important to know about running psychology experiments online?
 2. **Basics of using Amazon Mechanical Turk**
-3. Building dynamic web experiments using **jsPsych**.
+3. Building dynamic web experiments from scratch.
 4. Introduction and overview of **psiTurk**
 5. We will get a quick tour of **psiTurk**'s experiment exchange.
 6. Using **psiTurk** to put our experiment on AMT.
@@ -64,24 +63,9 @@ class: middle
 
 class: middle
 
-# What you will need to work hands-on
-
-1. The tutorial materials from [www.jspsych.org/cogsci2014](http://www.jspsych.org/cogsci2014)
-2. A programming-friendly text editor.
-3. For **psiTurk** portions, it would be best to be running Linux or OSX to install on your machine. Windows users can run PsiTurk on a cloud server using OpenShift.
-4. Register for an account at [psiturk.org/register](psiturk.org/register).
-5. You will need an Amazon Web Services account to use Mechanical Turk.
-<hr>
-Feel free to leave any subpart of this out and just watch.  Both libraries
-are extensively documented online and so you can use the workshop just to get
-oriented to the key concepts.
----
-
-class: middle
-
 # If you need help
 
-1. All tutorial materials are available online. [www.jspsych.org/cogsci2014](http://www.jspsych.org/cogsci2014)
+1. All tutorial materials are available online. [APSTurk.github.io](http://APSTurk.github.io)
 2. Interrupt and ask questions
 3. Find a code-buddy
 
@@ -484,7 +468,7 @@ Masked priming
 
   - Only partially replicated: no negative compatibility effect
 
-  - Lower bound on display duration in browser!
+  - Lower bound on display duration in browser! (but see, Barnhoorn et al., 2014)
 
 ---
 
@@ -752,17 +736,420 @@ class: center, middle
 
 ---
 
+.task[Part 2: Using AMT]
+# AMT's built-in question templates
+
+###Demo using the sandbox
+- Create survey HIT as requester
+- Complete HIT as worker
+- Download results
+
+
+---
+
+.task[Part 2: Using AMT]
+# AMT + Google Forms for surveys
+
+###Demo using the sandbox
+- Create a survey using [Google Forms](http://www.google.com/forms/)
+- Create HIT using survey link template
+- Worker sent to google forms link
+- Data saved in [Google Drive](http://www.google.com/drive/) spreadsheet
+
+
+---
+
+.task[Part 2: Using AMT]
+# AMT's built-in question templates
+
+###Advantages
+- Simple tools for building a survey
+- Easy to get started
+- Data automatically saved to a spreadsheet
+- Possible to randomize question order (with google forms)
+
+
+---
 
 .task[Part 2: Using AMT]
 # AMT's built-in question templates
 
 ###But...
 - Dynamic elements cannot be included!
-- For those purposes, you want to use AMTs **external question** type
+- Counterbalancing is difficult
+- Limited use beyond surveys
+- For complete control you can .blue[build your experiment as a website]
+- then, link your website to use AMTs **external question** type
+
+
+---
+class: center, middle
+.task[Part 2: Using AMT]
+# Up Next
+
+##1. Building a web-based experiment from scratch
+##2. Using .blue[PsiTurk] to serve your experiment to AMT
 
 
 ---
 
+.task[Part 2: Web-based Experiments]
+# Building a web-based experiment from scratch
+
+### Behavioral Experiments:
+- Present subjects with a task
+- Control the order and timing of stimuli (images, words, sounds, video, etc.)
+- Measure responses
+- Store the data
+
+### Good news! Web-pages:
+- can present many kinds of stimuli
+- record responses (keypresses, mouse-clicks, near millisecond precision)
+- store custom-formatted data
+- .blue[need to learn some programming]
+
+---
+
+.task[Part 2: Web-based Experiments]
+# Computer programming
+
+### Challenging, but .blue[FANTASTIC skill to learn]
+
+.center[
+<img src="images/C1_Frustrated.png" height="200"><img src="images/C1_Happy.jpg" height="200">
+]
+
+
+
+---
+.task[Part 2: Web-based Experiments]
+# Why learn Computer programming?
+
+### Creating Data (running experiments)
+- You control the details of your experiment
+- More flexibility 
+- More creativity
+
+### Interpreting Data (statistical analysis)
+- Batch-analysis (saves time)
+- more options for analysis
+- less human error (easier to find and eliminate bugs)
+
+### Marketable skill
+
+---
+.task[Part 2: Web-based Experiments]
+
+
+.center[
+<img src="images/C1_Interesting.png" height="500">
+]
+
+---
+.task[Part 2: Web-based Experiments]
+# Building a web-based experiment from scratch
+
+Web development has a lot of moving parts:
+
+- Code a .blue[web page]
+- .blue[Custom web server] to serve the experiment and interact with Amazon.
+- .blue[Database] for the server to store data.
+
+---
+.task[Part 2: Web-based Experiments]
+# Code a .blue[web page]:
+- Structure coded in <span class="blue">HTML</span>
+- Style defined in <span class="blue">CSS</span>
+- Programs written in <span class="blue">Javascript</span>
+
+---
+.task[Part 2: Web-based Experiments]
+# Code a .blue[web page]:
+- Structure coded in <span class="blue">HTML</span>
+- Style defined in <span class="blue">CSS</span>
+- Programs written in <span class="blue">Javascript</span>
+
+# Not enough time to teach programming...
+- but enough time to show how the parts work together
+- see helpful learning resources on workshop website [http://APSTurk.github.io](http://APSTurk.github.io)
+
+---
+.task[Part 2: Web-based Experiments]
+# Tools you'll need (they're all free!)
+- Text editor: [Textwrangler for Mac](http://www.barebones.com/products/textwrangler/)
+- Web-browser with Javascript console: [Google Chrome](http://www.google.com/chrome)
+
+
+---
+.task[Part 2: Web-based Experiments]
+# HTML
+- text commands to format a webpage
+
+.left-column[
+```html
+<html>
+	<head>
+		
+	</head>
+		
+	<body>
+		<p> Hello world </p>
+		<button> Click me </button>
+	</body>
+</html>
+```
+]
+<iframe srcdoc="
+		<body>
+			<p> Hello world </p>
+			<button> Click me </button>
+		</body>" </iframe>
+
+---
+
+.task[Part 2: Web-based Experiments]
+# CSS
+- format style of HTML elements
+
+.left-column[
+```html
+<html>
+<head>
+<link href="sample1.css" rel="stylesheet">
+</head>
+
+<body>
+<p id="p1"> Hello world </p>
+<button id="b1"> Click me </button>
+</body>
+</html>
+```
+
+```css
+#p1 {
+ 	font-size: 24pt;
+ 	color: blue;
+ 	text-align:center;
+}
+
+#b1 {
+ 	font-size: 20pt;
+ 	color: black;
+}
+```
+]
+<iframe src="sampleHTML/sample1.html"</iframe>
+
+---
+.task[Part 2: Web-based Experiments]
+# Javascript & JQUERY (js library)
+- dynamic control of web-page elements
+
+.left-column[
+```html
+<html>
+<head>
+<link href="sample1.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
+<script src="basic.js"></script> 
+</head>
+<body>
+<p id="p1"> Hello world </p>
+<button id="b1"> show </button>
+<button id="b2"> hide </button>
+</body>
+</html>
+```
+
+```css
+#p1 {
+ 	font-size: 24pt;
+ 	color: blue;
+ 	text-align:center;
+}
+#b1 {
+ 	font-size: 20pt;
+ 	color: black;
+}
+```
+]
+
+.right-column[
+```javascript
+$(document).ready(function(){
+	$("#b1").click(function(){
+		$("#p1").show();
+	});
+	$("#b2").click(function(){
+		$("#p1").hide();
+	});
+});
+```
+<iframe src="sampleHTML/sample2.html"</iframe>
+]
+---
+.task[Part 2: Web-based Experiments]
+# Presenting a series of Stroop items
+- dynamic control of web-page elements
+
+.left-column[
+```html
+<html>
+<head>
+<link href="sample1.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
+<script src="basic2.js"></script> 
+</head>
+<body>
+<p id="p1"> Stroop? </p>
+<button id="b1"> Next </button>
+</body>
+</html>
+```
+
+```css
+#p1 {
+ 	font-size: 24pt;
+ 	color: blue;
+ 	text-align:center;
+}
+#b1 {
+ 	font-size: 20pt;
+ 	color: black;
+}
+```
+]
+
+.right-column[
+```javascript
+$(document).ready(function(){
+
+words=["red","green","blue"];
+colors=["red","blue","green"];
+counter=-1;	
+
+$("#b1").click(function(){
+counter++
+$("#p1").html(words[counter]);
+$("#p1").css("font-color",colors[counter]);
+});
+
+});
+```
+<iframe src="sampleHTML/sample3.html"</iframe>
+]
+---
+
+.task[Part 2: Web-based Experiments]
+# Collecting responses and times
+- dynamic control of web-page elements
+
+.left-column[
+```html
+<html>
+<head>
+<link href="sample1.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
+<script src="basic3.js"></script> 
+</head>
+<body>
+<p id="p1"> keys and times? </p>
+</body>
+</html>
+```
+
+```css
+#p1 {
+ 	font-size: 24pt;
+ 	color: blue;
+ 	text-align:center;
+}
+#b1 {
+ 	font-size: 20pt;
+ 	color: black;
+}
+```
+]
+
+.right-column[
+```javascript
+$(document).ready(function(){
+
+$("body").keypress(function(event){
+ d = new Date();
+ $("#p1").html(d.getTime()); 
+ $("#p1").append(" " + String.fromCharCode(event.which));
+ });
+
+});
+```
+<iframe src="sampleHTML/sample4.html"</iframe>
+]
+---
+.task[Part 2: Web-based Experiments]
+# Basic Stroop demo
+.left-column[
+```javascript
+$(document).ready(function(){
+words=["red","green","blue"];
+colors=["red","blue","green"];
+counter=-1;
+data=[[]];
+
+//PRESENT STIMULUS
+$("#b1").click(function(){
+$("#b1").hide();
+counter++
+$("#p1").html(words[counter]);
+$("#p1").css("color",colors[counter]);
+onsetTime=new Date();
+trial=[words[counter],colors[counter]];
+});
+
+//COLLECT RESPONSE
+$("body").keypress(function(event){
+ responseTime = new Date();
+ RT=responseTime-onsetTime;
+ key=String.fromCharCode(event.which);
+ data.push(([trial,RT,key]).join());
+ $("#b1").click();
+ });
+ 
+});
+```
+]
+
+.right-column[<iframe src="sampleHTML/sample5.html"</iframe>]
+
+---
+
+.task[Part 2: Web-based Experiments]
+# Stroop Demo with Bells and Whistles
+- [Load demo](https://dl.dropboxusercontent.com/u/14462007/JavaScript%20Tutorial/StroopDemo8.html)
+
+---
+
+
+.task[Part 2: Building dynamic web experiments]
+# Learning Javascript
+
+Lots of resources for learning: E.g., [codecademy.com](http://codecademy.com):
+
+<img src="images/codecademy.png" width="750" />
+
+???
+
+No time to teach javascript
+
+One of the most commonly used languages.
+
+One resource I recommend for beginners is codecademy.
+
+Doesn't assume programming experimence.
+
+Guides you through Javascript interactively.
+
+---
 
 .task[Part 2: The mechanics]
 # External questions 
@@ -806,8 +1193,6 @@ psiTurk hint .red[[2]]: see templates/thanks.html
 ]
 -->
 
-
-
 ---
 
 
@@ -815,238 +1200,20 @@ class: center, middle
 # End of .blue[Part 2]
 ### .gray[Time for a break!]
  
+
 ---
 
 name: part3
 class: center, middle
 
-.task[Part 3: Building dynamic web experiments]
-# .blue[Part 3]: Building dynamic web experiments using jsPsych
-
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# Programming for the web:<br> .blue[The Good]
-
-- Web programming was developed specifically for user interaction.
-- Web experiments will run in the lab too!
-- Tons of existing resources, both .blue[libraries] and .blue[tutorials].
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# Programming for the web: <br>.blue[The Challenge]
-
-Web development has a lot of moving parts:
-
-- Code a .blue[web page]
-- .blue[Custom web server] to serve the experiment and interact with Amazon.
-- .blue[Database] for the server to store data.
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# Programming for the web: <br>.blue[The Challenge]
-
-Web development has a lot of moving parts:
-
-- Code a .blue[web page]  ✓
-- .blue[Custom web server] to serve the experiment and interact with Amazon. 
-- .blue[Database] for the server to store data. 
-
-<hr>
-**jsPsych** takes care of building the dynamic webpage.
-<br>
-<img src="images/jspsych.png" width="300">
-
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# Programming for the web: <br>.blue[The Challenge]
-
-Web development has a lot of moving parts:
-
-- Code a .blue[web page]
-- .blue[Custom web server] to serve the experiment and interact with Amazon. ✓ 
-- .blue[Database] for the server to store data. ✓ 
-
-<hr>
-**psiturk** takes care of the server, data storage, and interaction 
-with Amazon Mechanical turk.
-<br>
-<img src="images/psiturk.png" width="400">
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# Programming for the web: <br>.blue[The Challenge]
-
-
-- Code a .blue[web page]:
-    - Structure coded in <span class="blue">HTML</span>.
-    - Style defined in <span class="blue">CSS</span>.
-    - Programs written in <span class="blue">Javascript</span>.
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# What is JavaScript?
-
-- For one thing, it has .blue[nothing to do] with Java.
-- It is the .blue[only language] that browsers understand natively 
-    - (but flash is also an option).
-- These slides were compiled in Javascript!
-- Javascript's role in a behavioral experiment:
-    - Control the <span class="blue">task logic</span>: condition, etc.
-    - Control <span class="blue">what subjects see</span> and when.
-    - Collect and store <span class="blue">data</span>, then send it to the server.
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# What Javascript .blue[can] do
-
-- Interact with a web server (to send or request data for instance)
-- Track clicks, mouse movements, etc.
-- Record response times
-- Track changes in focus and window size
-- Enable group experiments
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# What Javascript .blue[can't] do
-
-- Control focus (lock participants in a window)
-- Disable browser actions (reloading, going back)
-- Saving directly to a file (server interaction is required)
-
----
-
-.task[Part 3: Building dynamic web experiments]
-# Learning Javascript
-
-Lots of resources for learning: E.g., [codecademy.com](http://codecademy.com):
-
-<img src="images/codecademy.png" width="750" />
-
-???
-
-No time to teach javascript
-
-One of the most commonly used languages.
-
-One resource I recommend for beginners is codecademy.
-
-Doesn't assume programming experimence.
-
-Guides you through Javascript interactively.
+.task[Part 3: psiTurk]
+# .blue[Part 3]: Introduction and overview of psiTurk
 
 ---
 
 class: center, middle
 
-.jspsych[jsPsych]
-<br><br><br>
-A JavaScript library for creating behavioral experiments that run in a web browser.
-
----
-
-class: middle
-
-## jsPsych separates the structure and content of experiments
-
-.left-half[
-##Structure
-
-* Show instructions
-* Show a stimulus and collect a keyboard response
-* Give feedback on a response
-* Show a visual search array]
-
-.right-half[
-##Content
-
-* What the instructions say
-* How long is the stimulus displayed
-* Which keys are acceptable responses
-* How many items are in the visual search array]
-
----
-
-class: middle
-
-# jsPsych provides the structure, you provide the content
-
----
-
-class: middle
-
-# Structures are created by defining plugins 
-
-Plugins can be assembled together in any combination to create an experiment.
-
----
-
-class: middle
-
-# Why is jsPsych helpful?
-
-* We tend to repeat the same structures across experiments, with variations in content.
-* Other researchers often want to use the same structures to replicate a finding.
-* jsPsych lets you rapidly assemble new experiments by providing all the functionality necessary to glue different structures together. 
-* jsPsych also provides a hanful of functions for interacting with data, randomizing factors, and developing new plugins.
-
----
-
-class: middle
-
-# When is jsPsych not helpful?
-
-* jsPsych works best when the entire experimental structure is known in advance.
-* If your experiment uses a very complicated and novel structure that you probably won't use again, it might not be worth it to use jsPsych.
-* Other tools do a better job with surveys.
-
----
-
-class: middle
-
-# How to learn more about jsPsych after today
-
-* All documentation is on the project's GitHub site: [https://www.github.com/jodeleeuw/jsPsych](https://www.github.com/jodeleeuw/jsPsych)
-* Mailing list for questions and answers: [https://groups.google.com/forum/#!forum/jspsych](https://groups.google.com/forum/#!forum/jspsych)
-
----
-
-
-class: center, middle
-# .blue[Part 3]
-### .gray[Begin hands-on jspsych tutorial]
- 
-
----
-
-
-class: center, middle
-# End of .blue[Part 3]
-### .gray[Time for a break!]
- 
----
-
-
-name: part4
-class: center, middle
-
-.task[Part 4: psiTurk]
-# .blue[Part 4]: Introduction and overview of psiTurk
-
----
-
-class: center, middle
-
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/psiturklogo_caption.png" width="730">
 
@@ -1054,7 +1221,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/what_is_1.png" width="730">
 
@@ -1062,7 +1229,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/what_is_2.png" width="730">
 
@@ -1070,7 +1237,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/what_is_3.png" width="730">
 
@@ -1078,7 +1245,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/what_is_4.png" width="730">
 
@@ -1086,13 +1253,13 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/what_is_5.png" width="730">
 
 ---
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 # Architecture
 
 - **Command line tool** (this is the "player")
@@ -1107,7 +1274,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_1.png" width="730">
 
@@ -1115,7 +1282,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_2.png" width="730">
 
@@ -1123,7 +1290,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_3.png" width="730">
 
@@ -1131,7 +1298,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_4.png" width="730">
 
@@ -1139,7 +1306,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_5.png" width="730">
 
@@ -1147,7 +1314,7 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_6.png" width="730">
 
@@ -1155,13 +1322,13 @@ class: center, middle
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 <img src="images/cloud_7.png" width="730">
 
 ---
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 # Installation
 
 **System requirements **
@@ -1181,7 +1348,7 @@ class: center, middle
 
 ---
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 # Installation
 
 
@@ -1205,7 +1372,7 @@ python get-pip.py
 
 ---
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 **3. Installing psiTurk**
 
@@ -1219,7 +1386,7 @@ pip install psiturk
 
 ---
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 # Command line features
 
@@ -1244,13 +1411,13 @@ pip install psiturk
 
 
 class: center, middle
-# .blue[Part 4]
+# .blue[Part 3]
 ### .gray[Checkout psiturk.org and documentation]
 
 
 ---
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
  # Workflow
 
@@ -1272,7 +1439,7 @@ class: center, middle
 ---
 
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 # Draw together example
 
@@ -1303,14 +1470,14 @@ psiturk
 
 
 class: center, middle
-# .blue[Part 4]
+# .blue[Part 3]
 ### .gray[Begin semi hands-on psiturk demo]
  
 
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1343,7 +1510,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1371,7 +1538,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1400,7 +1567,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1429,7 +1596,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1489,7 +1656,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1517,7 +1684,7 @@ static # <==== All other files
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1545,7 +1712,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1598,7 +1765,7 @@ h1 {
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1626,7 +1793,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1654,7 +1821,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # psiturk.js: <br> .blue[A Javascript API]
 
 A small library that will help you:
@@ -1670,7 +1837,7 @@ PsitTurk.js will .blue[automatically]:
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # psiturk.js: <br> .blue[Condition and Counterbalance]
 
 ```javascript
@@ -1685,7 +1852,7 @@ exp.taskdata.get("counterbalance")
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # psiturk.js: <br> .blue[Recording and saving data]
 
 ```javascript
@@ -1705,7 +1872,7 @@ exp.saveData()
 
 class: small
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # psiturk.js: .blue[API reference]
 
 - `psiturk.taskdata` — Data about task/subject
@@ -1721,7 +1888,7 @@ class: small
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Anatomy of a project
 
 ```bash
@@ -1751,7 +1918,7 @@ static
 
 ---
 
-.task[Part 4: Building dynamic web experiments]
+.task[Part 3: Building dynamic web experiments]
 # Javascript libraries
 
 These are currently dependencies of `psiturk.js`, we also use them in all our experiments.
@@ -1771,7 +1938,7 @@ class: middle, center
 
 class: center, middle
 
-.task[Part 4: Using psiTurk]
+.task[Part 3: Using psiTurk]
 
 # End of .blue[Part 3]
 Questions?
