@@ -27,20 +27,14 @@
 name: title
 class: center, middle
 
-<img src="images/jspsych+psiturk.png" width="650">
+<img src="images/psiturk.png" width="450">
 
 
-# Using .blue[Mechanical Turk] and .blue[jspsych+psiTurk] for Dynamic Web Experiments
+# Using .blue[Mechanical Turk] and .blue[psiTurk] for Dynamic Web Experiments
 <hr>
 .author[
-**Josh de Leeuw**, organizer
 
-_Indiana University_  
-
-<hr>
-
-**Todd Gureckis** ([@todd_gureckis](http://twitter.com/todd_gureckis)),
-Anna Coenen ([@AnnaCoenen](http://twitter.com/AnnaCoenen)), **Doug Markant** ([@dougmarkant](http://twitter.com/dougmarkant)), Jay Martin, John McDonnell ([@johnvmcdonnell](http://twitter.com/johnvmcdonnell)), Alex Rich, and many github contributors! 
+**Todd Gureckis** ([@todd_gureckis](http://twitter.com/todd_gureckis)) and many github contributors! 
 
 _[Computation and Cognition Lab](http://gureckislab.org)_, _New York University_  
 ]
@@ -54,36 +48,21 @@ class: middle
 
 1. **Overview, What is Mechanical Turk?** What is important to know about running psychology experiments online?
 2. **Basics of using Amazon Mechanical Turk**
-3. Building dynamic web experiments using **jsPsych**.
+3. Building dynamic web experiments.
 4. Introduction and overview of **psiTurk**
 5. We will get a quick tour of **psiTurk**'s experiment exchange.
 6. Using **psiTurk** to put our experiment on AMT.
-7. General Q & A with any remaining time.
+7. Open-source project management - the ups and downs to managing open source code
+8. General Q & A with any remaining time.
 
----
-
-class: middle
-
-# What you will need to work hands-on
-
-1. The tutorial materials from [www.jspsych.org/cogsci2014](http://www.jspsych.org/cogsci2014)
-2. A programming-friendly text editor.
-3. For **psiTurk** portions, it would be best to be running Linux or OSX to install on your machine. Windows users can run PsiTurk on a cloud server using OpenShift.
-4. Register for an account at [psiturk.org/register](psiturk.org/register).
-5. You will need an Amazon Web Services account to use Mechanical Turk.
-<hr>
-Feel free to leave any subpart of this out and just watch.  Both libraries
-are extensively documented online and so you can use the workshop just to get
-oriented to the key concepts.
 ---
 
 class: middle
 
 # If you need help
 
-1. All tutorial materials are available online. [www.jspsych.org/cogsci2014](http://www.jspsych.org/cogsci2014)
+1. All tutorial materials are available online. [github.com/APSTurk/MTurk-psiTurk-Workshop](https://github.com/APSTurk/MTurk-psiTurk-Workshop)
 2. Interrupt and ask questions
-3. Find a code-buddy
 
 ---
 
@@ -275,7 +254,7 @@ thanks for participating in research
 
 - And can also **award bonuses**
 
-- Amazon takes 10% of payments
+- Currently, Amazon takes 20% of payments (HITs with 10 or more assignemnts are charged an additional 20% fee, minimum fee is $0.01).
 
 - Amazon tries to stay out of disputes
 
@@ -821,7 +800,7 @@ name: part3
 class: center, middle
 
 .task[Part 3: Building dynamic web experiments]
-# .blue[Part 3]: Building dynamic web experiments using jsPsych
+# .blue[Part 3]: Building dynamic web experiments
 
 
 ---
@@ -856,7 +835,7 @@ Web development has a lot of moving parts:
 - .blue[Database] for the server to store data. 
 
 <hr>
-**jsPsych** takes care of building the dynamic webpage.
+Javascript/HTML5 (or libraries like jsPsych) takes care of building the dynamic webpage.
 <br>
 <img src="images/jspsych.png" width="300">
 
@@ -1017,13 +996,6 @@ class: middle
 
 * All documentation is on the project's GitHub site: [https://www.github.com/jodeleeuw/jsPsych](https://www.github.com/jodeleeuw/jsPsych)
 * Mailing list for questions and answers: [https://groups.google.com/forum/#!forum/jspsych](https://groups.google.com/forum/#!forum/jspsych)
-
----
-
-
-class: center, middle
-# .blue[Part 3]
-### .gray[Begin hands-on jspsych tutorial]
  
 
 ---
@@ -1764,7 +1736,7 @@ These are currently dependencies of `psiturk.js`, we also use them in all our ex
 
 class: middle, center
 
-# Let's see an example using jsPsych
+# Let's see an example!
 
 ---
 
@@ -1773,9 +1745,20 @@ class: center, middle
 
 .task[Part 4: Using psiTurk]
 
-# End of .blue[Part 3]
+# End of .blue[Part 4] 
 Questions?
 
+
+---
+
+
+name: part5
+class: center, middle
+
+.task[Part 5: open source]
+# .blue[Part 5]: Some thoughts on managing an open-source project
+
+---
 
     </textarea>
     <script type="text/javascript">
